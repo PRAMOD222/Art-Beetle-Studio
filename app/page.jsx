@@ -170,7 +170,7 @@ export default function Home() {
               <div className="bg-primary text-primary-foreground rounded-[40px] p-6 " key={index}>
                 <h2 className="text-5xl text-accent text-end">{box.value}</h2>
                 <h2 className="text-2xl text-end">{box.title}</h2>
-                <p className="mt-4">{box.description}</p>
+                <p className="mt-4 leading-5">{box.description}</p>
               </div>
             ))}
 
@@ -180,7 +180,7 @@ export default function Home() {
 
       <section className="mt-24 relative ">
 
-        <div className="absolute inset-y-0 left-0 w-1/2 opacity-10 -z-10">
+        <div className="absolute inset-y-0 left-0 w-[20%] opacity-10 -z-10">
           <Image
             src="/beetle.svg"
             alt="background beetle"
@@ -191,7 +191,7 @@ export default function Home() {
         </div>
 
         <div className="flex gap-10  w-2/3 ml-auto">
-          <h2 className="text-5xl leading-tight"> Art Beetle Studio moves beyond the brief, functioning as your{" "} <span className="text-accent">strategic co-pilot</span> to transform complex business challenges into seamless{" "} <span className="text-accent">digital experiences.</span> </h2>
+          <h2 className="text-5xl mb-12"> Art Beetle Studio moves beyond the brief, functioning as your{" "} <span className="text-accent">strategic co-pilot</span> to transform complex business challenges into seamless{" "} <span className="text-accent">digital experiences.</span> </h2>
         </div>
 
         <div className="flex items-stretch ">
@@ -218,7 +218,7 @@ export default function Home() {
                       <h2 className="text-5xl text-primary group-hover:text-accent">
                         {card.id}
                       </h2>
-                      <p className="text-lg">
+                      <p className="text-lg leading-5">
                         {card.before}
                         <span className="text-secondary group-hover:text-accent transition-colors">
                           {card.highlight}
@@ -247,22 +247,43 @@ export default function Home() {
           <h2 className="text-8xl "> We don&apos;t sell packages. <br />We find <span className="text-accent">the right tools to <br /> reach your goals</span></h2>
         </div>
 
-        <div className="border mt-18 grid grid-cols-4 grid-rows-2 gap-4">
-          <div className="aspect-square border">
-            <Image src="/gradient/gradient-01.svg" alt="service 1" width={500} height={500} className="h-full w-auto object-contain" />
+        <div className=" mt-18 grid grid-cols-4 grid-rows-2 gap-4">
+          <div className="aspect-square relative group hover:bg-primary rounded-[50px] overflow-hidden">
+            <Image src="/gradient/gradient-01.webp" alt="service 1" width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max text-center">
+              <h2 className="text-3xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">Logo Design &<br /> Logo Animation</h2>
+              <p className="text-sm font-light group-hover:text-primary-foreground transition-colors duration-200">Identity that reflects your meaning</p>
+            </div>
           </div>
-          <div className="aspect-square border">
-            <Image src="/gradient/gradient-02.svg" alt="service 2" width={500} height={500} className="h-full w-auto object-contain" />
+
+          {/* Branding & Visual Identity */}
+          <div className="aspect-square relative group hover:bg-primary rounded-[50px] overflow-hidden">
+            <Image src="/gradient/gradient-02.webp" alt="service 2" width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max text-center">
+              <h2 className="text-3xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">Branding &<br /> Visual Identity</h2>
+              <p className="text-sm font-light group-hover:text-primary-foreground transition-colors duration-200">Identity that reflects your meaning</p>
+            </div>
           </div>
-          <div className="aspect-square border">
-            <Image src="/gradient/gradient-03.svg" alt="service 3" width={500} height={500} className="h-full w-auto object-contain" />
+
+          <div className="aspect-square relative group hover:bg-primary rounded-[50px] overflow-hidden">
+            <Image src="/gradient/gradient-03.webp" alt="service 3" width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max text-center">
+              <h2 className="text-3xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">Social Media<br /> Handling</h2>
+              <p className="text-sm font-light group-hover:text-primary-foreground transition-colors duration-200">Identity that reflects your meaning</p>
+            </div>
           </div>
-          <div className="aspect-square border">
-            <Image src="/gradient/gradient-04.svg" alt="service 4" width={500} height={500} className="h-full w-auto object-contain" />
+
+          <div className="aspect-square relative group hover:bg-primary rounded-[50px] overflow-hidden">
+            <Image src="/gradient/gradient-04.webp" alt="service 4" width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max text-center">
+              <h2 className="text-3xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">Video Editing &<br /> Motion Graphics</h2>
+              <p className="text-sm font-light group-hover:text-primary-foreground transition-colors duration-200">Identity that reflects your meaning</p>
+            </div>
           </div>
-          <div className="border col-span-2 flex items-end">
-            <div className="border w-1/2">
-              <h2 className="text-2xl">We don&apos;t believe in one-size-fits-all solutions. You bring the request, we bring the webring mix of tools that will actually work for you.</h2>
+
+          <div className=" col-span-2 flex items-end">
+            <div className=" w-2/3 pr-10">
+              <h2 className="text-2xl font-light leading-8">We don&apos;t believe in one-size-fits-all solutions. You bring the request – we bring the mix of tools that will actually work.</h2>
 
               <div className="border border-primary rounded-full w-max my-8 flex items-center justify-center p-1">
                 <h2 className="px-6 ">Find the right service</h2>
@@ -272,11 +293,21 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="aspect-square border">
-            <Image src="/gradient/gradient-05.svg" alt="service 5" width={500} height={500} className="h-full w-auto object-contain" />
+
+          <div className="aspect-square relative group hover:bg-primary rounded-[50px] overflow-hidden">
+            <Image src="/gradient/gradient-05.webp" alt="service 5" width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max text-center">
+              <h2 className="text-3xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">Website Designing<br /> & Development</h2>
+              <p className="text-sm font-light group-hover:text-primary-foreground transition-colors duration-200">Identity that reflects your meaning</p>
+            </div>
           </div>
-          <div className="aspect-square border">
-            <Image src="/gradient/gradient-06.svg" alt="service 6" width={500} height={500} className="h-full w-auto object-contain" />
+
+          <div className="aspect-square relative group hover:bg-primary rounded-[50px] overflow-hidden">
+            <Image src="/gradient/gradient-06.webp" alt="service 6" width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max text-center">
+              <h2 className="text-3xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">3D Modeling<br /> & Animation</h2>
+              <p className="text-sm font-light group-hover:text-primary-foreground transition-colors duration-200">Identity that reflects your meaning</p>
+            </div>
           </div>
         </div>
       </section>
@@ -285,7 +316,7 @@ export default function Home() {
 
         <div className="bg-primary rounded-[40px] px-8 py-12 md:px-16 md:py-16">
           <div className=" flex justify-end">
-            <h2 className="text-8xl text-primary-foreground text-end mb-16">
+            <h2 className="text-[7rem] text-primary-foreground text-end mb-16 leading-[1]">
               We do our best
               <br />
               work with
@@ -373,7 +404,7 @@ export default function Home() {
       </section>
 
       <section className="mt-24">
-        <div className="border mb-16">
+        <div className=" mb-16">
           <h2 className="text-8xl text-primary ">Projects that speak <br />for themselves</h2>
         </div>
         <div className="grid grid-cols-2 gap-10">
@@ -389,7 +420,7 @@ export default function Home() {
           <h2 className="text-8xl text-primary text-end mb-16">Trust that started <br />with the first project </h2>
         </div>
 
-        <div className="relative h-screen">
+        <div className="relative h-screen ">
 
           <div className=" bg-[#221822] p-5 rounded-[30px] w-[20%] space-y-4 absolute top-0 left-1/2 -translate-x-1/2 ">
             <div className="flex gap-4">
@@ -475,13 +506,13 @@ export default function Home() {
 
           <h2 className="text-8xl text-primary text-start absolute bottom-10 left-0 -translate-y-1/2">You <br />asked</h2>
 
-          <h2 className="text-8xl text-primary text-end absolute bottom-0 right-0 -translate-y-1/2"> We <br /> answered</h2>
+          <h2 className="text-8xl text-primary text-end absolute bottom-0 right-0 "> We <br /> answered</h2>
 
         </div>
 
       </section>
 
-      <section className="mt-24">
+      <section className="mt-12">
         <div className="mx-24 ">
           <Accordion type="single" collapsible className="grid grid-cols-2 gap-4">
             {faqs.map((faq) => (
@@ -491,7 +522,7 @@ export default function Home() {
                 className="border-b-0 overflow-hidden rounded-2xl bg-primary text-primary-foreground"
               >
                 <AccordionTrigger className="p-6 text-base font-normal flex items-center justify-between gap-4 hover:no-underline">
-                  <span className="pr-4">{faq.question}</span>
+                  <span className="pr-4 text-2xl">{faq.question}</span>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4">
                   <p className="text-sm text-primary-foreground">{faq.answer}</p>
