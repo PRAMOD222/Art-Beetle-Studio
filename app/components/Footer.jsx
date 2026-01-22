@@ -17,7 +17,7 @@ const Footer = () => {
 
   return (
     <footer className="border-t mt-24 bg-primary text-primary-foreground">
-      <div className="container mx-auto py-10 lg:py-14 flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mx-6 md:mx-16 lg:mx-32 py-10 lg:py-14 flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-4">
             <Image src="/logoblack.png" alt="Art Beetle Studio" width={500} height={500} className="h-14 w-auto" />

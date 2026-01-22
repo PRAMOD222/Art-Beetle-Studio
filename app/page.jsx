@@ -150,7 +150,7 @@ export default function Home() {
   }
 
   return (
-    <div className="container mx-auto ">
+    <div className="mx-6 md:mx-16 lg:mx-32 ">
 
       <section className=" relative">
         <Image className="w-[40%] absolute top-[55%] left-[60%] -translate-x-1/2 -translate-y-1/2 opacity-35 -z-20" src="/beetle.svg" alt="hero" width={1000} height={1000} />
