@@ -47,7 +47,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="flex  gap-8">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
           <div className="flex gap-10 text-sm">
             <ul className="space-y-2">
               {primaryLinks.map((link) => (

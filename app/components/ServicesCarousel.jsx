@@ -2,7 +2,12 @@
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { FaPaw } from "react-icons/fa";
+import Image from "next/image";
+import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const cards = [
   {
@@ -49,6 +54,7 @@ const cards = [
 
 export default function ServicesCarousel() {
   const [activeIndex, setActiveIndex] = useState(2); // Start in middle
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleDotClick = (index) => {
     setActiveIndex(index);
@@ -111,61 +117,25 @@ export default function ServicesCarousel() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               onClick={() => setActiveIndex(index)}
             >
-              <div className={`w-full h-full grid grid-cols-2 grid-rows-2 ${card.bg}`}>
-                {/* Top Left: Logo */}
-                <div className="relative border-r border-b border-white/20 flex items-center justify-center p-8">
-                  <div className="text-center">
-                    <FaPaw className={`text-6xl ${card.accent} mx-auto mb-4`} />
-                    <h3 className={`text-4xl font-bold ${card.accent}`}>{card.title}</h3>
-                  </div>
-                </div>
-
-                {/* Top Right: Bowls */}
-                <div className="relative border-b border-white/20 flex items-center justify-center p-8">
-                    <div className="relative">
-                        {/* Mocking bowls with circles */}
-                        <div className={`w-32 h-32 rounded-full ${card.tertiary} flex items-center justify-center shadow-lg relative z-10 -mr-8`}>
-                            <span className={`text-xs font-bold ${card.accent} -rotate-12`}>{card.title}</span>
-                        </div>
-                        <div className={`w-32 h-32 rounded-full ${card.secondary} flex items-center justify-center shadow-lg absolute top-4 left-16`}>
-                             <span className="text-xs font-bold text-black -rotate-12">{card.title}</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Bottom Left: Bag */}
-                <div className="relative border-r border-white/20 flex items-center justify-center p-8">
-                     <div className={`w-32 h-40 ${card.secondary} rotate-[-10deg] shadow-xl flex items-center justify-center rounded-sm`}>
-                         <div className="text-center">
-                            <FaPaw className="text-2xl text-black mx-auto mb-2 opacity-50" />
-                            <span className="font-bold text-black text-sm">{card.title}</span>
-                         </div>
-                     </div>
-                </div>
-
-                {/* Bottom Right: Colors & CTA */}
-                <div className="relative p-8 flex flex-col justify-between">
-                  <div>
-                    <h4 className="text-white font-bold text-xl mb-4">COLORS</h4>
-                    <div className="space-y-2">
-                        <div className={`h-12 w-full ${card.tertiary} rounded-lg flex items-center px-3`}>
-                            <span className="text-[10px] text-white/70">PRIMARY<br/>#2E71DA</span>
-                        </div>
-                        <div className="h-12 w-full bg-[#10244F] rounded-lg flex items-center px-3">
-                             <span className="text-[10px] text-white/70">DARK<br/>#10244F</span>
-                        </div>
-                        <div className={`h-12 w-full ${card.secondary} rounded-lg flex items-center px-3`}>
-                             <span className="text-[10px] text-black/70">ACCENT<br/>#FFFF00</span>
-                        </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-end gap-2 mt-2">
-                      <span className="text-white font-medium text-lg underline underline-offset-4">See more</span>
-                  </div>
-                  
-                  {/* Dog Image Placeholder - using an absolute positioned element to simulate overlap */}
-                  {/* Since we don't have the dog image, we'll skip or use a generic placeholder if needed, but the layout is packed. */}
+              <div className="relative w-full h-full bg-gray-800">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src="/services/graphics/graphics-1.png" 
+                  alt={card.title}
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* See More Button */}
+                <div className="absolute bottom-4 right-4 z-20">
+                    <button 
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedImage("/services/graphics/full-graphics-1.png");
+                        }}
+                        className="bg-white/20 hover:bg-white/40 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium transition-colors border border-white/30"
+                    >
+                        See more
+                    </button>
                 </div>
               </div>
             </motion.div>
@@ -185,6 +155,25 @@ export default function ServicesCarousel() {
           />
         ))}
       </div>
+
+      {/* Full Screen Image Popup */}
+      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+        <DialogContent className="max-w-[90vw] h-[90vh] p-0 bg-transparent border-none shadow-none [&>button]:text-black [&>button]:bg-primary [&>button]:rounded-full [&>button]:p-4 [&>button]:top-0 [&>button]:right-0 [&>button]:translate-x-1/2 [&>button]:-translate-y-1/2 [&>button>svg]:w-10 [&>button>svg]:h-10 [&>button>svg]:stroke-[3] [&>button]:border-none [&>button]:ring-0 [&>button]:outline-none [&>button:focus]:ring-0 [&>button:focus]:ring-offset-0 [&>button:focus]:outline-none [&>button]:opacity-100">
+            <ScrollArea className="h-full w-full rounded-lg bg-transparent">
+                <div className="flex justify-center min-h-full ">
+                    {/* Image Wrapper */}
+                    <div className="relative w-full ">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img 
+                            src={selectedImage || ""} 
+                            alt="Full View" 
+                            className="w-full h-auto rounded-lg shadow-2xl"
+                        />
+                    </div>
+                </div>
+            </ScrollArea>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
