@@ -23,7 +23,7 @@ const NavBar = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <div className="sticky top-0 z-50 ">
+    <div className="sticky top-0 z-50 border-b shadow-accent ">
         {/* Desktop & Mobile Header Bar */}
         <div className="flex justify-between bg-background items-center px-6 md:px-16 lg:px-32 py-6 md:py-8 lg:py-10 ">
             {/* Logo */}

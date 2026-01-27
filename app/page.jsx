@@ -292,13 +292,13 @@ export default function Home() {
   return (
     <div className=" mx-auto px-6 md:px-16 lg:px-32 ">
 
-      <section className=" relative py-8 md:py-10 lg:py-0 ">
-        <Image className="w-[80%] md:w-[60%] lg:w-[40%] absolute top-[55%] left-[50%] lg:left-[60%] -translate-x-1/2 -translate-y-1/2 opacity-35 -z-20" src="/beetle.svg" alt="hero" width={1000} height={1000} />
-        <div className="w-[80%] md:w-[60%] lg:w-[40%] aspect-square absolute top-[55%] left-[50%] lg:left-[60%] -translate-x-1/2 -translate-y-1/2 opacity-10 blur-[100px] -z-10 rounded-full bg-blue-500 "></div>
+      <section className=" relative  md:py-10 lg:py-0 ">
+        <Image className="w-[80%] md:w-[60%] lg:w-[40%] absolute top-[55%] left-[50%] lg:left-[70%] -translate-x-1/2 -translate-y-1/2 opacity-35 -z-20" src="/beetle.svg" alt="hero" width={1000} height={1000} />
+        <div className="w-[80%] md:w-[60%] lg:w-[40%] aspect-square absolute top-[55%] left-[50%] lg:left-[70%] -translate-x-1/2 -translate-y-1/2 opacity-10 blur-[100px] -z-10 rounded-full bg-blue-500 "></div>
 
-        <div className="md:mt-10 lg:mt-14 z-30 w-full md:w-4/5 lg:w-2/3 2xl:w-1/2 ">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl text-left">Artistry Meets <br /> Brand Logic</h2>
-          <div className="border border-primary rounded-full w-max  my-8 flex items-center justify-center p-1">
+        <div className=" mt-4 lg:mt-14 z-30 w-full md:w-4/5 lg:w-2/3 2xl:w-1/2 ">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl text-left md:leading-28">Artistry Meets <br /> Brand Logic</h2>
+          <div className="border border-primary rounded-full w-max my-6 md:my-8 flex items-center justify-center p-1">
             <h2 className="px-6 text-sm md:text-base">Get a Free Consultation</h2>
             <ContactDialog>
               <button className="cursor-pointer bg-linear-to-r from-purple-600 to-accent text-primary-foreground px-4 md:px-6 py-2 md:py-3 rounded-full ">
@@ -322,7 +322,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-10 lg:mt-24 relative ">
+      <section className="mt-16 lg:mt-24 relative ">
 
         <div className="absolute inset-y-0 left-0 w-[40%] md:w-[20%] opacity-10 -z-10">
           <Image
@@ -335,7 +335,7 @@ export default function Home() {
         </div>
 
         <div className="flex gap-10 w-full lg:w-2/3 ml-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-8 lg:mb-12"> Art Beetle Studio moves beyond the brief, functioning as your{" "} <span className="text-accent">strategic co-pilot</span> to transform complex business challenges into seamless{" "} <span className="text-accent">digital experiences.</span> </h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-8 lg:mb-12 leading-8 md:leading-14"> Art Beetle Studio moves beyond the brief, functioning as your{" "} <span className="text-accent">strategic co-pilot</span> to transform complex business challenges into seamless{" "} <span className="text-accent">digital experiences.</span> </h2>
         </div>
 
         <div className="flex flex-col lg:flex-row items-stretch ">
@@ -396,12 +396,12 @@ export default function Home() {
       </section>
 
       <section className="mt-10 lg:mt-24">
-        <div className="text">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl"> We don&apos;t sell packages. <br />We find <span className="text-accent">the right tools to <br /> reach your goals</span></h2>
+        <div className="">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl leading-8 md:leading-14"> We don&apos;t sell packages. <br />We find <span className="text-accent">the right tools to <br /> reach your goals</span></h2>
         </div>
 
         {/* Mobile/Tablet Carousel View */}
-        <div className="mt-10 lg:hidden">
+        <div className="mt-6 lg:hidden">
           <Carousel
             opts={{ align: "start" }}
             setApi={setServiceCarouselApi}
@@ -413,8 +413,8 @@ export default function Home() {
                   <div className="aspect-square relative group hover:bg-primary rounded-[40px] overflow-hidden">
                     <Image src={service.img} alt={`service ${index + 1}`} width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max text-center">
-                      <h2 className="text-2xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">{service.title}</h2>
-                      <p className="text-xs font-light group-hover:text-primary-foreground transition-colors duration-200">{service.desc}</p>
+                      <h2 className="text-3xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">{service.title}</h2>
+                      <p className="text-sm font-light group-hover:text-primary-foreground transition-colors duration-200">{service.desc}</p>
                     </div>
                   </div>
                 </CarouselItem>
@@ -435,7 +435,7 @@ export default function Home() {
 
           <div className="mt-8">
             <h2 className="text-xl font-light leading-8">We don&apos;t believe in one-size-fits-all solutions. You bring the request – we bring the mix of tools that will actually work.</h2>
-            <div className="border border-primary rounded-full w-max my-8 flex items-center justify-center p-1">
+            <div className="border border-primary rounded-full w-max my-4 flex items-center justify-center p-1">
               <h2 className="px-6 text-sm md:text-base">Find the right service</h2>
               <ContactDialog>
                 <button className="cursor-pointer bg-linear-to-r from-purple-600 to-accent text-primary-foreground px-4 md:px-6 py-2 md:py-3 rounded-full ">
@@ -497,7 +497,7 @@ export default function Home() {
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-10">
 
             <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
-              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-[80px] sm:w-[160px] lg:w-[260px] shrink-0">
+              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-[80px] sm:w-[160px] lg:w-[260px] shrink-0 ">
                 01
               </p>
               <div className="space-y-3 flex-1">
@@ -533,7 +533,7 @@ export default function Home() {
             </div>
 
             <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
-              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-[80px] sm:w-[160px] lg:w-[260px] shrink-0">
+              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-[80px] sm:w-[160px] lg:w-[260px] shrink-0 ">
                 03
               </p>
               <div className="space-y-3 flex-1">
@@ -572,9 +572,9 @@ export default function Home() {
 
       </section>
 
-      <section className="mt-10 lg:mt-24">
-        <div className="mb-10 lg:mb-16">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl text-primary text-left lg:text-left">Projects that speak <br />for themselves</h2>
+      <section className="mt-16 lg:mt-24">
+        <div className="mb-6 lg:mb-16">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl text-primary text-left lg:text-left md:leading-28">Projects that speak <br />for themselves</h2>
         </div>
         {/* Mobile/Tablet Carousel View */}
         <div className="lg:hidden">
@@ -605,16 +605,16 @@ export default function Home() {
         </div>
 
         {/* Desktop Grid View */}
-        <div className="hidden lg:grid grid-cols-4 gap-10">
+        <div className="hidden lg:grid grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((_, index) => (
             <div key={index} className="bg-primary rounded-[40px] aspect-square"></div>
           ))}
         </div>
       </section>
 
-      <section className="mt-10 lg:mt-24">
+      <section className="mt-16 lg:mt-24">
         <div className="flex justify-start lg:justify-end">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl text-primary text-left lg:text-end mb-10 lg:mb-16">Trust that started <br />with the first project </h2>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl text-primary text-left lg:text-end mb-6 lg:mb-16">Trust that started <br />with the first project </h2>
         </div>
 
         <div className="relative h-[50vh] md:h-[60vh] lg:h-[120vh] hidden md:block">
@@ -708,7 +708,7 @@ export default function Home() {
         </div>
 
         {/* Mobile/Tablet Carousel View */}
-        <div className="md:hidden mt-10">
+        <div className="md:hidden mt-2">
           <Carousel
             opts={{ align: "start" }}
             setApi={setTestimonialCarouselApi}
@@ -747,7 +747,7 @@ export default function Home() {
             </div>
           </Carousel>
 
-          <div className="mt-12 space-y-2">
+          <div className="mt-16 space-y-2">
             <h2 className="text-5xl text-primary text-start">You asked</h2>
             <h2 className="text-5xl text-primary text-end"> We answered</h2>
           </div>
@@ -755,9 +755,9 @@ export default function Home() {
 
       </section>
 
-      <section className="mt-10">
+      <section className="mt-6 ">
         {/* Mobile/Tablet Carousel View */}
-        <div className="lg:hidden">
+        <div className="lg:hidden ">
           <Carousel
             opts={{ align: "start" }}
             setApi={setFaqCarouselApi}
@@ -785,7 +785,7 @@ export default function Home() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-2 mt-6">
+            <div className="flex justify-center gap-2">
               {[0, 1].map((_, index) => (
                 <button
                   key={index}
