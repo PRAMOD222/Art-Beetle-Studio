@@ -397,7 +397,7 @@ export default function Home() {
 
       <section className="mt-10 lg:mt-24">
         <div className="">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl leading-8 md:leading-14"> We don&apos;t sell packages. <br />We find <span className="text-accent">the right tools to <br /> reach your goals</span></h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl leading-8 md:leading-14"> We don&apos;t sell packages. <br />We find <span className="text-accent">the right tools to <br className="hidden lg:block" /> reach your goals</span></h2>
         </div>
 
         {/* Mobile/Tablet Carousel View */}
