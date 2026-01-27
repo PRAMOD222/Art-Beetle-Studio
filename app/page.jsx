@@ -290,13 +290,13 @@ export default function Home() {
   }
 
   return (
-    <div className="px-6 md:px-16 lg:px-32 ">
+    <div className=" mx-auto px-6 md:px-16 lg:px-32 ">
 
-      <section className=" relative py-10 lg:py-0">
+      <section className=" relative py-8 md:py-10 lg:py-0 ">
         <Image className="w-[80%] md:w-[60%] lg:w-[40%] absolute top-[55%] left-[50%] lg:left-[60%] -translate-x-1/2 -translate-y-1/2 opacity-35 -z-20" src="/beetle.svg" alt="hero" width={1000} height={1000} />
         <div className="w-[80%] md:w-[60%] lg:w-[40%] aspect-square absolute top-[55%] left-[50%] lg:left-[60%] -translate-x-1/2 -translate-y-1/2 opacity-10 blur-[100px] -z-10 rounded-full bg-blue-500 "></div>
 
-        <div className="mt-10 lg:mt-14 z-30 w-full md:w-4/5 lg:w-2/3 2xl:w-1/2 ">
+        <div className="md:mt-10 lg:mt-14 z-30 w-full md:w-4/5 lg:w-2/3 2xl:w-1/2 ">
           <h2 className="text-5xl md:text-7xl lg:text-8xl text-left">Artistry Meets <br /> Brand Logic</h2>
           <div className="border border-primary rounded-full w-max  my-8 flex items-center justify-center p-1">
             <h2 className="px-6 text-sm md:text-base">Get a Free Consultation</h2>
@@ -309,10 +309,12 @@ export default function Home() {
 
           <div className="boxes flex flex-col sm:flex-row gap-4 w-full mt-16 lg:mt-32  md:w-4/5 xl:w-2/3 2xl:w-4/5">
             {heroBoxes.map((box, index) => (
-              <div className="bg-primary text-primary-foreground rounded-[30px] lg:rounded-[40px] p-6 w-2/3 aspect-square" key={index}>
-                <h2 className="text-4xl md:text-5xl text-accent text-end">{box.value}</h2>
-                <h2 className="text-xl md:text-2xl text-end">{box.title}</h2>
-                <p className="mt-4 leading-5 text-sm md:text-base">{box.description}</p>
+              <div className="bg-primary flex flex-col justify-between text-primary-foreground rounded-[30px] lg:rounded-[40px] p-6 w-2/3 aspect-square" key={index}>
+                <div>
+                  <h2 className="text-4xl md:text-5xl text-accent text-end">{box.value}</h2>
+                  <h2 className="text-xl md:text-2xl text-end">{box.title}</h2>
+                </div>
+                <p className="mt-4 leading-5 text-sm md:text-base ">{box.description}</p>
               </div>
             ))}
 
@@ -320,7 +322,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16 lg:mt-24 relative ">
+      <section className="mt-10 lg:mt-24 relative ">
 
         <div className="absolute inset-y-0 left-0 w-[40%] md:w-[20%] opacity-10 -z-10">
           <Image
@@ -337,9 +339,6 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col lg:flex-row items-stretch ">
-
-
-
           <Carousel
             opts={{
               align: "start",
@@ -355,7 +354,7 @@ export default function Home() {
             <div className="w-full lg:w-2/3 order-1 lg:order-2">
               <CarouselContent>
                 {numberCards.map((card, index) => (
-                  <CarouselItem key={index} className="basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                  <CarouselItem key={index} className="basis-2/3 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                     <div className="bg-[#191921] aspect-square rounded-[30px] lg:rounded-[40px] p-6 lg:p-8 flex flex-col justify-between group hover:bg-primary hover:text-primary-foreground transition-colors duration-200">
                       <h2 className="text-4xl lg:text-5xl text-primary group-hover:text-accent">
                         {card.id}
@@ -384,9 +383,8 @@ export default function Home() {
                   <button
                     key={index}
                     onClick={() => carouselApi?.scrollTo(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === selectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
-                    }`}
+                    className={`h-2 rounded-full transition-all duration-300 ${index === selectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
@@ -397,9 +395,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16 lg:mt-24">
+      <section className="mt-10 lg:mt-24">
         <div className="text">
-          <h2 className="text-4xl md:text-6xl lg:text-8xl "> We don&apos;t sell packages. <br />We find <span className="text-accent">the right tools to <br /> reach your goals</span></h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl"> We don&apos;t sell packages. <br />We find <span className="text-accent">the right tools to <br /> reach your goals</span></h2>
         </div>
 
         {/* Mobile/Tablet Carousel View */}
@@ -427,9 +425,8 @@ export default function Home() {
                 <button
                   key={index}
                   onClick={() => serviceCarouselApi?.scrollTo(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === serviceSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === serviceSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -487,7 +484,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16 lg:mt-24">
+      <section className="mt-10 lg:mt-24">
 
         <div className="bg-primary rounded-[30px] lg:rounded-[40px] px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
           <div className="flex justify-start lg:justify-end">
@@ -500,10 +497,10 @@ export default function Home() {
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-10">
 
             <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
-              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-auto sm:w-[45%]">
+              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-[80px] sm:w-[160px] lg:w-[260px] shrink-0">
                 01
               </p>
-              <div className="space-y-3 w-full sm:w-[60%]">
+              <div className="space-y-3 flex-1">
                 <h3 className="text-3xl md:text-4xl text-primary-foreground">
                   Personal brands
                   <br />
@@ -518,10 +515,10 @@ export default function Home() {
             </div>
 
             <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
-              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-auto sm:w-[45%]">
+              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-[80px] sm:w-[160px] lg:w-[260px] shrink-0">
                 02
               </p>
-              <div className="space-y-3 w-full sm:w-[60%]">
+              <div className="space-y-3 flex-1">
                 <h3 className="text-3xl md:text-4xl text-primary-foreground">
                   Small &amp; medium
                   <br />
@@ -536,10 +533,10 @@ export default function Home() {
             </div>
 
             <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
-              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-auto sm:w-[45%]">
+              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-[80px] sm:w-[160px] lg:w-[260px] shrink-0">
                 03
               </p>
-              <div className="space-y-3 w-full sm:w-[60%]">
+              <div className="space-y-3 flex-1">
                 <h3 className="text-3xl md:text-4xl text-primary-foreground">
                   Founders and
                   <br />
@@ -554,10 +551,10 @@ export default function Home() {
             </div>
 
             <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
-              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-auto sm:w-[45%]">
+              <p className="text-6xl sm:text-8xl lg:text-[13rem] leading-none sm:leading-44 text-secondary w-[80px] sm:w-[160px] lg:w-[260px] shrink-0">
                 04
               </p>
-              <div className="space-y-3 w-full sm:w-[60%]">
+              <div className="space-y-3 flex-1">
                 <h3 className="text-3xl md:text-4xl text-primary-foreground">
                   Enterprise-level
                   <br />
@@ -575,7 +572,7 @@ export default function Home() {
 
       </section>
 
-      <section className="mt-16 lg:mt-24">
+      <section className="mt-10 lg:mt-24">
         <div className="mb-10 lg:mb-16">
           <h2 className="text-5xl md:text-7xl lg:text-8xl text-primary text-left lg:text-left">Projects that speak <br />for themselves</h2>
         </div>
@@ -598,9 +595,8 @@ export default function Home() {
                 <button
                   key={index}
                   onClick={() => projectCarouselApi?.scrollTo(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === projectSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === projectSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -609,14 +605,14 @@ export default function Home() {
         </div>
 
         {/* Desktop Grid View */}
-        <div className="hidden lg:grid grid-cols-2 gap-10">
+        <div className="hidden lg:grid grid-cols-4 gap-10">
           {[1, 2, 3, 4].map((_, index) => (
             <div key={index} className="bg-primary rounded-[40px] aspect-square"></div>
           ))}
         </div>
       </section>
 
-      <section className="mt-16 lg:mt-24">
+      <section className="mt-10 lg:mt-24">
         <div className="flex justify-start lg:justify-end">
           <h2 className="text-5xl md:text-7xl lg:text-8xl text-primary text-left lg:text-end mb-10 lg:mb-16">Trust that started <br />with the first project </h2>
         </div>
@@ -743,15 +739,14 @@ export default function Home() {
                 <button
                   key={index}
                   onClick={() => testimonialCarouselApi?.scrollTo(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === testimonialSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === testimonialSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
           </Carousel>
-          
+
           <div className="mt-12 space-y-2">
             <h2 className="text-5xl text-primary text-start">You asked</h2>
             <h2 className="text-5xl text-primary text-end"> We answered</h2>
@@ -760,7 +755,7 @@ export default function Home() {
 
       </section>
 
-      <section className="mt-12">
+      <section className="mt-10">
         {/* Mobile/Tablet Carousel View */}
         <div className="lg:hidden">
           <Carousel
@@ -795,9 +790,8 @@ export default function Home() {
                 <button
                   key={index}
                   onClick={() => faqCarouselApi?.scrollTo(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === faqSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === faqSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -821,7 +815,7 @@ export default function Home() {
                   <p className="text-sm text-primary-foreground">{faq.answer}</p>
                 </AccordionContent>
               </AccordionItem>
-              
+
             ))}
           </Accordion>
           <Accordion type="single" collapsible className="space-y-4 w-1/2">
@@ -838,7 +832,7 @@ export default function Home() {
                   <p className="text-sm text-primary-foreground">{faq.answer}</p>
                 </AccordionContent>
               </AccordionItem>
-              
+
             ))}
           </Accordion>
         </div>

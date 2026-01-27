@@ -1,14 +1,15 @@
 import { Puzzle, Lightbulb, TrendingUp } from "lucide-react";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-12 md:py-20 space-y-24">
+    <div className="mx-auto py-12 md:py-20 space-y-24">
       {/* About Us Section */}
-      <section className="space-y-8 mx-auto max-w-4xl">
+      <section className="space-y-8 mx-6 md:mx-auto md:max-w-4xl">
         <h1 className="text-4xl md:text-5xl font-normal text-primary border-b-2 border-primary w-max pb-2">
           About us
         </h1>
-        <div className="space-y-6 text-lg text-primary leading-relaxed">
+        <div className="space-y-6 text-lg text-primary leading-7">
           <p>
             Art Beetle Studio is a full-service creative agency dedicated to
             building bold, meaningful, and visually impactful brands. We transform
@@ -38,18 +39,18 @@ export default function AboutPage() {
       </section>
 
       {/* Our Aim Section */}
-      <section className="space-y-8 mx-auto max-w-4xl">
+      <section className="space-y-8 mx-6 md:mx-auto md:max-w-4xl">
         <h2 className="text-4xl md:text-5xl font-normal text-primary border-b-2 border-primary w-max pb-2">
           Our Aim
         </h2>
-        <p className="text-lg text-primary leading-relaxed">
+        <p className="text-lg text-primary leading-7">
           To empower brands with impactful visual identities and creative
           solutions that drive growth, recognition, and long-term value.
         </p>
       </section>
 
       {/* Our Goal Section */}
-      <section className="space-y-16 mx-auto max-w-4xl">
+      <section className="space-y-8 mx-6 md:mx-auto md:max-w-4xl">
         <h2 className="text-4xl md:text-5xl font-normal text-primary border-b-2 border-primary w-max pb-2">
           Our Goal
         </h2>
@@ -58,7 +59,7 @@ export default function AboutPage() {
           {/* Goal 1 */}
           <div className="flex flex-col items-center text-center space-y-6">
             <div className="relative">
-              <Puzzle className="w-24 h-24 text-purple-500" />
+              <Image src="/icons-01.svg" width={100} height={100} alt="Build Distinctive Brands" className="w-24 h-24" />
               <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-accent opacity-50 blur-xl rounded-full -z-10"></div>
             </div>
             <h3 className="text-2xl font-semibold text-primary">
@@ -73,7 +74,7 @@ export default function AboutPage() {
           {/* Goal 2 */}
           <div className="flex flex-col items-center text-center space-y-6">
             <div className="relative">
-              <Lightbulb className="w-24 h-24 text-purple-500" />
+              <Image src="/icons-02.svg" width={100} height={100} alt="Deliver End-to-End Creative Solutions" className="w-24 h-24" />
               <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-accent opacity-50 blur-xl rounded-full -z-10"></div>
             </div>
             <h3 className="text-2xl font-semibold text-primary">
@@ -88,7 +89,7 @@ export default function AboutPage() {
           {/* Goal 3 */}
           <div className="flex flex-col items-center text-center space-y-6">
             <div className="relative">
-              <TrendingUp className="w-24 h-24 text-purple-500" />
+              <Image src="/icons-03.svg" width={100} height={100} alt="Grow With Our Clients" className="w-24 h-24" />
               <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-accent opacity-50 blur-xl rounded-full -z-10"></div>
             </div>
             <h3 className="text-2xl font-semibold text-primary">

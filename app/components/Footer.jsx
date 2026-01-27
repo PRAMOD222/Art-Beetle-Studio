@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { FaArrowRight } from "react-icons/fa6"
+import { FaFacebookF, FaInstagram, FaPinterestP, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   const primaryLinks = [
@@ -17,21 +18,26 @@ const Footer = () => {
 
   return (
     <footer className="border-t mt-24 bg-primary text-primary-foreground">
-      <div className="mx-6 md:mx-16 lg:mx-32 py-10 lg:py-14 flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+
+      <div className="px-6 md:px-16 lg:px-32  py-10 lg:py-14 flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-4">
             <Image src="/logoblack.png" alt="Art Beetle Studio" width={500} height={500} className="h-14 w-auto" />
           </div>
           <div className="flex items-center gap-3">
             <div className="flex gap-2">
-              {["F", "X", "In", "Be"].map((item) => (
-                <div
-                  key={item}
-                  className="h-8 w-8 rounded-xl border flex items-center justify-center text-xs"
-                >
-                  {item}
-                </div>
-              ))}
+              <div className="h-10 w-10 rounded-md border border-gray-500 flex items-center justify-center text-xs">
+                <FaFacebookF className="text-lg" />
+              </div>
+              <div className="h-10 w-10 rounded-md border border-gray-500 flex items-center justify-center text-xs">
+                <FaInstagram className="text-lg" />
+              </div>
+              <div className="h-10 w-10 rounded-md border border-gray-500 flex items-center justify-center text-xs">
+                <FaPinterestP className="text-lg" />
+              </div>
+              <div className="h-10 w-10 rounded-md border border-gray-500 flex items-center justify-center text-xs">
+                <FaYoutube className="text-lg" />
+              </div>
             </div>
           </div>
           <p className="text-xs text-muted-foreground">
@@ -39,7 +45,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="text-center lg:text-left">
+        <div className="md:text-center lg:text-left">
           <p className="text-4xl sm:text-5xl lg:text-6xl leading-tight">
             You bring the idea.
             <br />

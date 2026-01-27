@@ -25,7 +25,7 @@ const NavBar = () => {
   return (
     <div className="sticky top-0 z-50 ">
         {/* Desktop & Mobile Header Bar */}
-        <div className="flex justify-between bg-background items-center mx-6 md:mx-16 lg:mx-32 py-6 md:py-8 lg:py-10">
+        <div className="flex justify-between bg-background items-center px-6 md:px-16 lg:px-32 py-6 md:py-8 lg:py-10 ">
             {/* Logo */}
             <div className="z-50">
                 <Link href="/">
@@ -83,7 +83,10 @@ const NavBar = () => {
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     className="fixed top-0 left-0 w-full bg-background z-40 overflow-hidden flex flex-col pt-24"
                 >
-                    <div className="flex flex-col items-center gap-8 px-6">
+                    <div className="absolute top-0 left-0 w-[80vw] h-[80vw] bg-purple-600 rounded-full blur-[100px] opacity-20 -translate-x-1/2 -translate-y-1/2 pointer-events-none border border-primary" />
+                    <div className="absolute bottom-0 right-0 w-[80vw] h-[80vw] bg-accent rounded-full blur-[100px] opacity-20 translate-x-1/2 translate-y-1/2 pointer-events-none border border-primary" />
+
+                    <div className="flex flex-col items-center gap-8 px-6 relative z-10">
                         <nav className="w-full">
                             <ul className="flex flex-col items-center gap-6">
                                 {navItems.map((item) => {
