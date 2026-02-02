@@ -77,10 +77,10 @@ const Footer = () => {
           <div className="flex flex-col gap-4">
 
             <div className="text-sm">
-              <p>patole.pravin94.05@gmail.com</p>
+              <p>patole.pravin9405@gmail.com</p>
             </div>
 
-            <div className="border rounded-full w-max flex items-center justify-center p-1">
+            <div className="border border-black rounded-full w-max flex items-center justify-center p-1">
               <button className="px-6 text-sm">Get a consultation</button>
               <div className="bg-linear-to-r from-purple-600 to-accent text-primary-foreground px-4 py-2 rounded-full flex items-center justify-center">
                 <FaArrowRight className="text-lg text-primary" />

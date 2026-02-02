@@ -4,9 +4,24 @@ import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa6";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { useEffect, useState } from "react"
+import { motion } from "motion/react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { ContactDialog } from "@/components/contact-dialog"
 
+
+const RevealCta = ({ text, className }) => {
+  return (
+    <motion.div
+      initial={{ width: 0, opacity: 0 }}
+      whileInView={{ width: "auto", opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+      className="overflow-hidden whitespace-nowrap"
+    >
+      <h2 className={className}>{text}</h2>
+    </motion.div>
+  )
+}
 
 export default function Home() {
   const [carouselApi, setCarouselApi] = useState(null)
@@ -299,7 +314,7 @@ export default function Home() {
         <div className=" mt-4 lg:mt-14 z-30 w-full md:w-4/5 lg:w-2/3 2xl:w-1/2 ">
           <h2 className="text-5xl md:text-7xl lg:text-8xl text-left md:leading-28">Artistry Meets <br /> Brand Logic</h2>
           <div className="border border-primary rounded-full w-max my-6 md:my-8 flex items-center justify-center p-1">
-            <h2 className="px-6 text-sm md:text-base">Get a Free Consultation</h2>
+            <RevealCta text="Get a Free Consultation" className="px-6 text-sm md:text-base" />
             <ContactDialog>
               <button className="cursor-pointer bg-linear-to-r from-purple-600 to-accent text-primary-foreground px-4 md:px-6 py-2 md:py-3 rounded-full ">
                 <FaArrowRight className="text-lg md:text-xl text-primary" />
@@ -351,7 +366,7 @@ export default function Home() {
               <CarouselPrevious className='w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary text-primary-foreground hidden lg:flex items-center justify-center static lg:absolute lg:top-full lg:-translate-y-full lg:left-0 mr-4 lg:mr-0' />
               <CarouselNext className='w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary text-primary-foreground hidden lg:flex items-center justify-center static lg:absolute lg:top-full lg:left-20 lg:-translate-y-full' />
             </div>
-            <div className="w-full lg:w-2/3 order-1 lg:order-2">
+            <div className="w-full lg:w-2/3 order-1 lg:order-2 relative">
               <CarouselContent>
                 {numberCards.map((card, index) => (
                   <CarouselItem key={index} className="basis-2/3 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
@@ -370,6 +385,9 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
+
+              <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-accent opacity-10 blur-2xl rounded-full -z-10 md:hidden"></div>
+
 
               <div className="mt-8 h-px w-full bg-white/20 rounded-full overflow-hidden hidden lg:block">
                 <div
@@ -436,7 +454,7 @@ export default function Home() {
           <div className="mt-8">
             <h2 className="text-xl font-light leading-8">We don&apos;t believe in one-size-fits-all solutions. You bring the request – we bring the mix of tools that will actually work.</h2>
             <div className="border border-primary rounded-full w-max my-4 flex items-center justify-center p-1">
-              <h2 className="px-6 text-sm md:text-base">Find the right service</h2>
+              <RevealCta text="Find the right service" className="px-6 text-sm md:text-base" />
               <ContactDialog>
                 <button className="cursor-pointer bg-linear-to-r from-purple-600 to-accent text-primary-foreground px-4 md:px-6 py-2 md:py-3 rounded-full ">
                   <FaArrowRight className="text-lg md:text-xl text-primary" />
@@ -462,7 +480,7 @@ export default function Home() {
             <div className="w-2/3 pr-10">
               <h2 className="text-2xl font-light leading-8">We don&apos;t believe in one-size-fits-all solutions. You bring the request – we bring the mix of tools that will actually work.</h2>
               <div className="border border-primary rounded-full w-max my-8 flex items-center justify-center p-1">
-                <h2 className="px-6 text-base">Find the right service</h2>
+                <RevealCta text="Find the right service" className="px-6 text-base" />
                 <ContactDialog>
                   <button className="cursor-pointer  bg-linear-to-r from-purple-600 to-accent text-primary-foreground px-6 py-3 rounded-full ">
                     <FaArrowRight className="text-xl text-primary" />
@@ -716,7 +734,7 @@ export default function Home() {
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="basis-full">
+                <CarouselItem key={index} className="basis-full shadow shadow-[#221822]">
                   <div className="bg-[#221822] p-5 rounded-[30px] space-y-4">
                     <div className="flex gap-4">
                       <div className="h-10 w-10 rounded-full bg-black/40"></div>
