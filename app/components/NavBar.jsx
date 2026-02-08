@@ -3,13 +3,49 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 
 const NavBar = () => {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768)
+    }
+    
+    // Initial check
+    handleResize()
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!isDesktop) return
+
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > lastScrollY && showNavbar) {
+        // Scrolling down -> Hide navbar
+        setShowNavbar(false)
+      } else if (currentScrollY < lastScrollY && !showNavbar) {
+        // Scrolling up -> Show navbar
+        setShowNavbar(true)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [showNavbar, isDesktop, lastScrollY])
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -23,7 +59,24 @@ const NavBar = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <div className="sticky top-0 z-50 border-b shadow-accent ">
+    <>
+      <div 
+        className={`fixed top-6 left-6 z-50 hidden md:block transition-all duration-300 ${showNavbar ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+      >
+         {/* <button 
+           onClick={() => setShowNavbar(true)} 
+           className="p-3 bg-background/80 backdrop-blur-md border border-primary/20 rounded-full shadow-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+         >
+            <Menu size={24} className="group-hover:scale-110 transition-transform" />
+         </button> */}
+      </div>
+
+    <motion.div 
+      className={`z-50 border-b shadow-accent w-full ${isDesktop ? 'fixed top-0 left-0 right-0' : 'sticky top-0'}`}
+      initial={{ y: 0 }}
+      animate={{ y: isDesktop && !showNavbar ? '-100%' : '0%' }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    >
         {/* Desktop & Mobile Header Bar */}
         <div className="flex justify-between bg-background items-center px-6 md:px-16 lg:px-32 py-4 ">
             {/* Logo */}
@@ -121,7 +174,8 @@ const NavBar = () => {
                 </motion.div>
             )}
         </AnimatePresence>
-    </div>
+    </motion.div>
+    </>
   )
 }
 

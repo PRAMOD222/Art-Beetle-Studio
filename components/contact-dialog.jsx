@@ -23,7 +23,7 @@ export function ContactDialog({ children }) {
         <DialogHeader>
           <DialogTitle className="text-2xl text-primary">Get in Touch</DialogTitle>
           <DialogDescription className="text-gray-400">
-            Fill out the form below and we'll get back to you shortly.
+            Fill out the form below and we&apos;ll get back to you shortly.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="grid gap-4 py-4">
