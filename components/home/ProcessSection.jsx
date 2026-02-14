@@ -76,7 +76,7 @@ export const ProcessSection = ({ numberCards }) => {
               <CarouselContent>
                 {numberCards.map((card, index) => (
                   <CarouselItem key={index} className="basis-2/3 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                    <div className="bg-[#191921] aspect-square rounded-[30px] lg:rounded-[40px] p-6 lg:p-8 flex flex-col justify-between group hover:bg-primary hover:text-primary-foreground transition-colors duration-200">
+                    <div className="bg-[#191921] aspect-square rounded-[30px] lg:rounded-[40px] p-6 lg:p-8 flex flex-col justify-between group hover:bg-primary hover:text-primary-foreground transition-colors duration-200 cursor-grab active:cursor-grabbing select-none">
                       <h2 className="text-4xl lg:text-5xl text-primary group-hover:text-accent">
                         {card.id}
                       </h2>

@@ -44,7 +44,10 @@ function ServiceCategory({ title, slides }) {
       {/* Carousel Container */}
       <div className="relative w-full max-w-6xl h-[600px] flex items-center justify-center [perspective:1000px]">
         {slides.map((slide, index) => {
-          const offset = index - activeIndex;
+          const total = slides.length;
+          let offset = index - activeIndex;
+          if (offset > total / 2) offset -= total;
+          if (offset < -total / 2) offset += total;
           const absOffset = Math.abs(offset);
           
           let x = "0%";

@@ -12,15 +12,15 @@ const servicesData = [
         openInNewTab: false,
       },
       {
-        thumbnail: "/services/graphics/graphics-1.png",
+        thumbnail: "/services/graphics/graphics-2.png",
         fullImage: "/services/graphics/full-graphics-2.webp",
         backgroundGradient: "linear-gradient(90deg, #10244f 0%, #006ab6 50%, #10244f 100%)",
         hasGradient: true,
         openInNewTab: false,
       },
       {
-        thumbnail: "/services/graphics/graphics-1.png",
-        fullImage: "/services/graphics/full-graphics-1.webp",
+        thumbnail: "/services/graphics/graphics-3.png",
+        fullImage: "/services/graphics/full-graphics-3.webp",
         backgroundGradient: "linear-gradient(90deg, #10244f 0%, #006ab6 50%, #10244f 100%)",
         hasGradient: true,
         openInNewTab: false,

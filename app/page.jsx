@@ -29,32 +29,32 @@ export const metadata = {
 export default function Home() {
   const services = [
     {
-      img: "/gradient/gradient-01.webp",
+      img: "/gradient/gradient-01.png",
       title: <>Logo Design &<br /> Logo Animation</>,
       desc: "Identity that reflects your meaning"
     },
     {
-      img: "/gradient/gradient-02.webp",
+      img: "/gradient/gradient-02.png",
       title: <>Branding &<br /> Visual Identity</>,
       desc: "Identity that reflects your meaning"
     },
     {
-      img: "/gradient/gradient-03.webp",
+      img: "/gradient/gradient-03.png",
       title: <>Social Media<br /> Handling</>,
       desc: "Identity that reflects your meaning"
     },
     {
-      img: "/gradient/gradient-04.webp",
+      img: "/gradient/gradient-04.png",
       title: <>Video Editing &<br /> Motion Graphics</>,
       desc: "Identity that reflects your meaning"
     },
     {
-      img: "/gradient/gradient-05.webp",
+      img: "/gradient/gradient-05.png",
       title: <>Website Designing<br /> & Development</>,
       desc: "Identity that reflects your meaning"
     },
     {
-      img: "/gradient/gradient-06.webp",
+      img: "/gradient/gradient-06.png",
       title: <>3D Modeling<br /> & Animation</>,
       desc: "Identity that reflects your meaning"
     },
@@ -64,12 +64,12 @@ export default function Home() {
     {
       value: "30+",
       title: "Services",
-      description: "We close the full cycle: frompositioningto advertising"
+      description: "We close the full cycle: from positioning to advertising"
     },
     {
       value: "08+",
       title: "Projects",
-      description: "We close the full cycle: frompositioningto advertising"
+      description: "We close the full cycle: from positioning to advertising"
     }
   ]
   const numberCards = [

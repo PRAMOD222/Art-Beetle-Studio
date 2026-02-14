@@ -1,37 +1,106 @@
 "use client"
+import { useState, useEffect } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { RevealCta } from "@/components/RevealCta"
-import { ContactDialog } from "@/components/contact-dialog"
-import { FaArrowRight } from "react-icons/fa6"
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 
-export const FaqSection = ({ faqs }) => {
+export const FaqSection = ({ faqs = [] }) => {
+
+  const [faqCarouselApi, setFaqCarouselApi] = useState(null)
+  const [faqSelectedIndex, setFaqSelectedIndex] = useState(0)
+
+  useEffect(() => {
+    if (!faqCarouselApi) {
+      return
+    }
+
+    faqCarouselApi.on("select", () => {
+      setFaqSelectedIndex(faqCarouselApi.selectedScrollSnap())
+    })
+  }, [faqCarouselApi])
+
+  if (!faqs.length) return null
+
   return (
-    <section className="mt-16 lg:mt-24">
-        <h2 className="text-5xl md:text-7xl lg:text-8xl text-primary text-left mb-6 lg:mb-16">FAQs</h2>
-        <Accordion type="single" collapsible className="w-full space-y-4">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-b border-white/20 px-0">
-              <AccordionTrigger className="text-xl md:text-2xl hover:text-accent hover:no-underline py-6">
-                {faq.question}
+    <section className="mt-6 ">
+      <div className="lg:hidden ">
+        <Carousel
+          opts={{ align: "start" }}
+          setApi={setFaqCarouselApi}
+          className="w-full"
+        >
+          <CarouselContent>
+            {[0, 1].map((i) => (
+              <CarouselItem key={i} className="basis-full">
+                <Accordion type="single" collapsible className="space-y-4">
+                  {faqs.slice(i * Math.ceil(faqs.length / 2), (i + 1) * Math.ceil(faqs.length / 2)).map((faq) => (
+                    <AccordionItem
+                      key={faq.id}
+                      value={faq.id}
+                      className="border-b-0 overflow-hidden rounded-2xl bg-primary text-primary-foreground"
+                    >
+                      <AccordionTrigger className="p-6 font-normal flex items-center justify-between gap-4 hover:no-underline">
+                        <span className="pr-4 text-lg">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-6 pb-4">
+                        <p className="text-sm text-primary-foreground">{faq.answer}</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex justify-center gap-2">
+            {[0, 1].map((_, index) => (
+              <button
+                key={index}
+                onClick={() => faqCarouselApi?.scrollTo(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${index === faqSelectedIndex ? "w-8 bg-primary" : "w-2 bg-white/20"
+                  }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </Carousel>
+      </div>
+
+      {/* Desktop View */}
+      <div className="hidden lg:flex gap-6">
+        <Accordion type="single" collapsible className="space-y-4 w-1/2">
+          {faqs.slice(0, Math.ceil(faqs.length / 2)).map((faq) => (
+            <AccordionItem
+              key={faq.id}
+              value={faq.id}
+              className="border-b-0 overflow-hidden rounded-2xl bg-primary text-primary-foreground"
+            >
+              <AccordionTrigger className="p-6 text-base font-normal flex items-center justify-between gap-4 hover:no-underline">
+                <span className="pr-4 text-xl">{faq.question}</span>
               </AccordionTrigger>
-              <AccordionContent className="text-base md:text-lg text-gray-400 pb-6">
-                {faq.answer}
+              <AccordionContent className="px-6 pb-4">
+                <p className="text-sm text-primary-foreground">{faq.answer}</p>
               </AccordionContent>
             </AccordionItem>
+
           ))}
         </Accordion>
+        <Accordion type="single" collapsible className="space-y-4 w-1/2">
+          {faqs.slice(Math.ceil(faqs.length / 2)).map((faq) => (
+            <AccordionItem
+              key={faq.id}
+              value={faq.id}
+              className="border-b-0 overflow-hidden rounded-2xl bg-primary text-primary-foreground"
+            >
+              <AccordionTrigger className="p-6 text-base font-normal flex items-center justify-between gap-4 hover:no-underline">
+                <span className="pr-4 text-xl">{faq.question}</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4">
+                <p className="text-sm text-primary-foreground">{faq.answer}</p>
+              </AccordionContent>
+            </AccordionItem>
 
-        <div className="mt-16 lg:mt-24 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-8">Ready to start your project?</h2>
-          <div className="border border-primary rounded-full w-max mx-auto flex items-center justify-center p-1">
-            <RevealCta text="Let's talk" className="px-6 md:px-10 text-lg md:text-xl" />
-            <ContactDialog>
-              <button className="cursor-pointer bg-linear-to-r from-purple-600 to-accent text-primary-foreground px-6 md:px-8 py-3 md:py-4 rounded-full ">
-                <FaArrowRight className="text-xl md:text-2xl text-primary" />
-              </button>
-            </ContactDialog>
-          </div>
-        </div>
-      </section>
+          ))}
+        </Accordion>
+      </div>
+    </section>
   )
 }
