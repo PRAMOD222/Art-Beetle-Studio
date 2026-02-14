@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { YouTubeEmbed } from '@next/third-parties/google';
 import dynamic from 'next/dynamic';
@@ -19,6 +19,17 @@ const ModelViewer = dynamic(() => import("@/components/ModelViewer"), {
 function ServiceCategory({ title, slides }) {
   const [activeIndex, setActiveIndex] = useState(Math.floor(slides.length / 2));
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [startX, setStartX] = useState(null);
+  const [deltaX, setDeltaX] = useState(0);
+  const [didSwipe, setDidSwipe] = useState(false);
+
+  useEffect(() => {
+    const updateIsMobile = () => setIsMobile(typeof window !== "undefined" && window.innerWidth < 768);
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
 
   const handleDotClick = (index) => {
     setActiveIndex(index);
@@ -33,16 +44,53 @@ function ServiceCategory({ title, slides }) {
     }
   };
 
+  const beginGesture = (x) => {
+    setDidSwipe(false);
+    setDeltaX(0);
+    setStartX(x);
+  };
+
+  const updateGesture = (x) => {
+    if (startX === null) return;
+    setDeltaX(x - startX);
+  };
+
+  const endGesture = () => {
+    if (startX === null) return;
+    const threshold = 50;
+    if (deltaX <= -threshold) {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+      setDidSwipe(true);
+    } else if (deltaX >= threshold) {
+      setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
+      setDidSwipe(true);
+    }
+    setStartX(null);
+    setDeltaX(0);
+    if (didSwipe) {
+      setTimeout(() => setDidSwipe(false), 300);
+    }
+  };
+
   return (
-    <div className="w-full py-20 flex flex-col items-center justify-center overflow-hidden min-h-[800px] bg-black">
+    <div className="w-full py-6 md:py-20 flex flex-col items-center justify-center overflow-hidden md:min-h-[800px] bg-black">
       {/* Title */}
       <div className=" relative">
-        <h2 className="text-6xl text-white font-light tracking-tight">{title}</h2>
-        <div className="h-1 w-full bg-white mt-4"></div>
+        <h2 className="text-2xl md:text-6xl text-white font-light tracking-tight">{title}</h2>
+        <div className="border-b border-white mt-4"></div>
       </div>
 
       {/* Carousel Container */}
-      <div className="relative w-full max-w-6xl h-[600px] flex items-center justify-center [perspective:1000px]">
+      <div
+        className="relative w-full max-w-6xl h-[35vh] md:h-[600px] flex items-center justify-center [perspective:1000px]"
+        onTouchStart={(e) => beginGesture(e.touches[0].clientX)}
+        onTouchMove={(e) => updateGesture(e.touches[0].clientX)}
+        onTouchEnd={endGesture}
+        onMouseDown={(e) => beginGesture(e.clientX)}
+        onMouseMove={(e) => updateGesture(e.clientX)}
+        onMouseUp={endGesture}
+        onMouseLeave={endGesture}
+      >
         {slides.map((slide, index) => {
           const total = slides.length;
           let offset = index - activeIndex;
@@ -79,7 +127,7 @@ function ServiceCategory({ title, slides }) {
           return (
             <motion.div
               key={index}
-              className={`absolute w-[800px] h-[500px] rounded-[40px] overflow-hidden shadow-2xl border-4 border-white/10 ${!isVisible ? 'pointer-events-none' : 'cursor-pointer'}`}
+              className={`absolute w-[85vw] sm:w-[960px] aspect-video rounded-xl md:rounded-[40px] overflow-hidden shadow-2xl border-4 border-white/10 ${!isVisible ? 'pointer-events-none' : 'cursor-pointer'}`}
               initial={false}
               animate={{
                 x,
@@ -89,7 +137,9 @@ function ServiceCategory({ title, slides }) {
                 filter: offset === 0 ? "brightness(1)" : "brightness(0.4)",
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                if (!didSwipe) setActiveIndex(index);
+              }}
             >
               <div className="relative w-full h-full bg-gray-800 ">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

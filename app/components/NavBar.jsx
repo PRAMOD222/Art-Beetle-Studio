@@ -10,7 +10,7 @@ import { Menu, X } from 'lucide-react'
 const NavBar = () => {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-  const [showNavbar, setShowNavbar] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(true)
   const [isDesktop, setIsDesktop] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
 

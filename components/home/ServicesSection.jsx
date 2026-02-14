@@ -83,7 +83,7 @@ export const ServicesSection = ({ services }) => {
         <div className="hidden lg:grid mt-18 grid-cols-4 grid-rows-2 gap-4">
           {services.slice(0, 4).map((service, index) => (
             <div key={index} className="aspect-square relative group hover:bg-primary rounded-[50px] overflow-hidden">
-              <Image src={service.img} alt={`service ${index + 1}`} width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+              <Image src={service.img} alt={`service ${index + 1}`} width={500} height={500} className="h-full w-full object-cover opacity-100 group-hover:opacity-0 transition-all duration-300" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max text-center">
                 <h2 className="text-3xl font-medium mb-2 text-accent group-hover:text-primary-foreground transition-colors duration-200">{service.title}</h2>
                 <p className="text-sm font-light group-hover:text-primary-foreground transition-colors duration-200">{service.desc}</p>
